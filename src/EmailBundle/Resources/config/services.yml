@@ -1,0 +1,7 @@
+services:
+    email2ticket.email:
+        class: EmailBundle\Email\Email
+        arguments: ['@doctrine.orm.entity_manager', '@email2ticket.email.connection']
+        
+    email2ticket.email.connection:
+        class: EmailBundle\Email\EmailConnection
