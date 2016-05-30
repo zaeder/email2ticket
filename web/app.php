@@ -1,7 +1,9 @@
 <?php
 
-$installFile = str_replace('app', 'install', $_SERVER['SCRIPT_FILENAME']);
-if(file_exists($installFile)){
+$rootDir = preg_replace('/web\/app(_dev)?\.php/', '', str_replace('\\', '/', $_SERVER['SCRIPT_FILENAME']));
+$parametersFile = $rootDir . 'app/config/parameters.yml';
+$installFile = $rootDir . 'web/install/install.php';
+if(!file_exists($parametersFile) && !is_dir($rootDir . 'vendor') && file_exists($installFile)){
     include $installFile;
 } else {
     /**
